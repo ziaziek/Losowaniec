@@ -1,0 +1,31 @@
+
+h2 {
+    margin-top:15px;
+}
+
+.setlist {
+    background: #dff0d8;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: 33%;
+    margin-right: 33%;
+    text-align: center;
+}
+
+.setlist_span {
+    color: #343437;
+}
+
+.row_over {
+    background: #ebccd1;
+}
+
+.main_form {
+    position: absolute;
+    margin: 10% 15% 10% 15%;
+    background-color: #E9E9E9;
+    border: solid 1px black;
+    border-radius: 3px;
+}
