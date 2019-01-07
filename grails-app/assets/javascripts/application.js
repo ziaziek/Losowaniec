@@ -18,6 +18,24 @@ if (typeof jQuery !== 'undefined') {
             $('#spinner').fadeOut();
         });
     })(jQuery);
+    $(".numbers_picker").hide();
 }
+
+$("#radios").click(function () {
+
+    var rtchecked = $("#radio_tak").is(':checked');
+    var system_txt = $('input[name="n_system"]');
+    var hm = $('input[name="n_all"]').val();
+
+    if(rtchecked==false){
+        $(".numbers_picker").load("/index/numberspicker", {"howmany":hm});
+        $(".numbers_picker").fadeIn();
+        system_txt.val("0");
+    } else {
+        $(".numbers_picker").fadeOut();
+    }
+    system_txt.prop('disabled', !rtchecked);
+
+});
 
 

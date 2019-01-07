@@ -9,14 +9,18 @@ class CombinatoricsService {
 
     def zbiory(int zIluLiczb, int n, int ileLosowanych,int prawdopodobienstwo) {
         def intSet = generujLosowyZbior(zIluLiczb, n)
+        return zbiory(intSet, n, ileLosowanych, prawdopodobienstwo)
+    }
+
+    def zbiory(Set intSet, int n, int ileLosowanych,int prawdopodobienstwo){
         def ret = [][]
-        if(n> intSet.size()){
+        if(n> intSet.size() || intSet.size()<ileLosowanych){
             System.out.println("Wrong number given. Cannot create subsets of the given number from the set provided.");
             return new int[0][0];
         } else if(ileLosowanych==intSet.size()){
             return intSet
         } else {
-            def vars = []//  new int[(int)CombinatoricsUtils.binomialCoefficient(intSet.size(), ileLosowanych)][ileLosowanych]
+            def vars = []
             int i=0;
             Iterator<int[]> cit = CombinatoricsUtils.combinationsIterator(intSet.size(), ileLosowanych);
             while(cit.hasNext()){

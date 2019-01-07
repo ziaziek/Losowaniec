@@ -23,9 +23,19 @@ h2 {
 }
 
 .main_form {
-    position: absolute;
     margin: 10% 15% 10% 15%;
     background-color: #E9E9E9;
     border: solid 1px black;
     border-radius: 3px;
+}
+
+.liczba {
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+
+.numbers_picker {
+    position: relative;
+    padding-top: 10px;
 }

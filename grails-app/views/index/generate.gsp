@@ -18,6 +18,6 @@ Według Twoich kryteriów wybrano ${pickedSetsnumber} z nich.
         <br/>
     </g:each>
 </div>
-<a href="/"><button>Powrót</button></a>
+<a href="/index"><button>Powrót</button></a>
 </body>
 </html>
