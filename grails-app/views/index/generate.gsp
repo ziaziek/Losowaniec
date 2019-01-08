@@ -12,8 +12,8 @@ Według Twoich kryteriów wybrano ${pickedSetsnumber} z nich.
     <g:each var="set" in="${sets}">
         <div class="setlist_span">
             <g:each var="number" in="${set}">
-                <div style="display: table-cell; vertical-align: text-bottom; float:left; width: 35px; height:35px; text-align: center; background-image: url('${resource(dir: 'images', file: 'kolko.png')}');
-                background-repeat: no-repeat"><span style="">${number}</span></div>
+                <div class="liczba_result" style="display: table-cell;vertical-align: middle; background-image: url('${resource(dir: 'images', file: 'kolko.png')}');
+                background-repeat: no-repeat"><span>${number}</span></div>
             </g:each>
             <br/>
         </div>
