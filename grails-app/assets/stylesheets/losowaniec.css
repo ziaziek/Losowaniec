@@ -4,7 +4,6 @@ h2 {
 }
 
 .setlist {
-    background: #dff0d8;
     border-radius: 5px;
     border-color: black;
     border-width: 1px;
@@ -16,6 +15,10 @@ h2 {
 
 .setlist_span {
     color: #343437;
+    padding-left: 30%;
+    font-family: Arial;
+    font-size: 15pt;
+    font-weight: bold;
 }
 
 .row_over {
@@ -38,4 +41,9 @@ h2 {
 .numbers_picker {
     position: relative;
     padding-top: 10px;
+}
+
+.liczba_result {
+    width: 35px;
+    height: 35px;
 }
