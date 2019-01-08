@@ -1,5 +1,7 @@
 package losowaniec
 
+import grails.web.servlet.mvc.GrailsParameterMap
+
 class IndexController {
 
     def combinatoricsService
@@ -10,30 +12,28 @@ class IndexController {
     }
 
     def generate() {
-        def n_system, n_all = Integer.valueOf(params.n_all==""? "0": params.n_all), n_sets=Integer.valueOf(params.n_sets==""? "0": params.n_sets), ilosc_zbiorow, sn
-        def picked_numbers =[]
-        def n_los=Integer.valueOf(params.n_los==""? "0" : params.n_los)
-        def zbiory = []
 
-        if(params.automatic=="y"){
-            n_system=Integer.valueOf(params.n_system)
-            zbiory = combinatoricsService.zbiory(n_all, n_system, n_los, n_sets)
+        InitialParams iparams = new InitialParams(params)
+
+        if(isValid(iparams)){
+            def ilosc_zbiorow, sn
+            def zbiory = []
+
+            if(iparams.automatic=="y"){
+                zbiory = combinatoricsService.zbiory(iparams.n_all, iparams.n_system, iparams.n_los, iparams.n_sets)
+            } else {
+                n_system=picked_numbers.size()
+                zbiory = combinatoricsService.zbiory(iparams.picked_numbers, iparams.n_system, iparams.n_los, iparams.n_sets)
+            }
+                sn = combinatoricsService.ileZbiorow(iparams.n_los,iparams.n_system)
+                ilosc_zbiorow = zbiory.size()
+                [setsnumber: sn,
+                 pickedSetsnumber: ilosc_zbiorow,
+                 sets: zbiory]
         } else {
-            println("A")
-            picked_numbers=generatePickedNumbers(params.picked_numbers)
-            n_system=picked_numbers.size()
-            zbiory = combinatoricsService.zbiory(picked_numbers, n_system, n_los, n_sets)
-        }
-
-        if(n_los>n_system || n_system==0){
             render("view": "/index/error")
-        } else {
-            sn = combinatoricsService.ileZbiorow(n_los,n_system)
-            ilosc_zbiorow = zbiory.size()
-            [setsnumber: sn,
-             pickedSetsnumber: ilosc_zbiorow,
-             sets: zbiory]
         }
+
     }
 
     def numberspicker(){
@@ -41,12 +41,8 @@ class IndexController {
         [numbers:numbers]
     }
 
-    def generatePickedNumbers(String ns){
-        Set retArray = new TreeSet<Integer>()
-        if(ns.trim().length()>0){
-            def nsArray = ns.trim().split("  ")
-            nsArray.each {it -> retArray.add(Integer.valueOf(it))}
-        }
-        return retArray
+
+    private boolean isValid(InitialParams initialParams){
+        return (initialParams.n_system>=initialParams.n_los && initialParams.n_all> initialParams.n_los && initialParams.n_all>initialParams.n_system)
     }
 }
