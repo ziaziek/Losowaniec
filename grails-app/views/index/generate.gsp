@@ -10,11 +10,13 @@ Istnieje ${setsnumber} kombinacji.
 Według Twoich kryteriów wybrano ${pickedSetsnumber} z nich.
 <div class="setlist">
     <g:each var="set" in="${sets}">
-        <span class="setlist_span">
+        <div class="setlist_span">
             <g:each var="number" in="${set}">
-                ${number}&nbsp;
+                <div style="display: table-cell; vertical-align: text-bottom; float:left; width: 35px; height:35px; text-align: center; background-image: url('${resource(dir: 'images', file: 'kolko.png')}');
+                background-repeat: no-repeat"><span style="">${number}</span></div>
             </g:each>
-        </span>
+            <br/>
+        </div>
         <br/>
     </g:each>
 </div>
